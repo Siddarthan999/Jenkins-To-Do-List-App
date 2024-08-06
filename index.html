@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>To-Do-List</title>
+    </head>
+    <body style="background-color: rgb(92, 198, 234);">
+        <div class="container" style="text-align: center;">
+            <h1 style="color: white;">WORK TO-DOS</h1>
+            <form action="">
+                <input type="text" id="To-Do-List" placeholder="Task" style="border-radius: 5px; padding: 7px;" required>
+                <input type="date" id="date" style="border-radius: 5px; padding: 7px;" required>
+                <button onclick="addArray()" style="background-color: rgb(30, 235, 61); font-weight: bold; border-radius: 5px; padding-left: 14px; padding-right: 14px; padding-top: 8px; padding-bottom: 8px;">Add</button>
+            </form>
+            <div class="display-todolist"></div>
+        </div>
+        <script>
+            const todolist_Array = [];
+
+            function addArray() {
+                let html = '';
+                let task = document.getElementById('To-Do-List').value;
+                let date = document.getElementById('date').value;
+                todolist_Array.push({task, date});
+                display();
+            };
+
+            function deleteList(i) {
+                todolist_Array.splice(i,1);
+                if(todolist_Array.length==0)
+                    document.querySelector('.display-todolist').innerHTML = '';
+                else
+                    display();
+            }
+
+            function display() {
+                let html = '';
+                for(let i=0; i<todolist_Array.length; i++)
+                    html += `<p> ${todolist_Array[i].task} ${todolist_Array[i].date} <button onclick="deleteList(${i})" style="background-color: red; color: white; font-weight: bold; border-radius: 5px; padding-left: 14px; padding-right: 14px; padding-top: 8px; padding-bottom: 8px;">Delete</button> </p>`;
+                document.querySelector('.display-todolist').innerHTML = html;
+            }
+
+        </script>
+    </body>
+</html>
