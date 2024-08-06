@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git credentialsId: '89df4684-1e78-400c-811e-c4d8c998e8a0', url: 'https://github.com/Siddarthan999/Jenkins-To-Do-List-App.git'
+                git credentialsId: '89df4684-1e78-400c-811e-c4d8c998e8a0', url: 'https://github.com/Siddarthan999/Jenkins-To-Do-List-App.git', branch: 'main'
             }
         }
 
